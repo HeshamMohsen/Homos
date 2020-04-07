@@ -1,0 +1,20 @@
+Beginner version:
+
+event: {
+    name: "",
+    date: "",
+    time: ""
+}
+
+define event by entering:
+1- name (required) -> done
+2- date (required) -> done
+3- if there is no time chosen, use midnight time 12:00 am -> done
+4- start button start countdown
+
+
+12032323 milliseconds
+/ 1000 seconds
+/ 60 minutes
+/ 60 hours
+/ 24 days

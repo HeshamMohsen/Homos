@@ -1,0 +1,27 @@
+.header {
+    background-color: #333;
+    text-align: center;
+    padding: 5px;
+
+    h1 {
+        color: #fff;
+        margin: 0;
+        font-size: 40px;
+        font-weight: bold;
+    }
+}
+
+.counter {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: #333;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 5px;
+}
