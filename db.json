@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "id": "f7dfdd5f-067c-4d48-b6a9-c27f52b32370",
+      "name": "events",
+      "date": "2020-04-12",
+      "time": "",
+      "related_to": "learning"
+    },
+    {
+      "id": "77ed90e3-eb9c-4300-bbc1-027ab3fa6fe2",
+      "name": "How to code: simple data",
+      "date": "2020-04-22",
+      "time": "",
+      "related_to": "learning"
+    }
+  ]
+}

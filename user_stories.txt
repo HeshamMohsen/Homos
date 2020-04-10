@@ -13,8 +13,14 @@ define event by entering:
 4- start button start countdown
 
 
-12032323 milliseconds
+milliseconds
 / 1000 seconds
 / 60 minutes
 / 60 hours
 / 24 days
+
+bonus features: 
+1- add events [] -> done
+2- save to json file -> done
+3- alert user when event reached -> done
+4- design UI/UX -> done

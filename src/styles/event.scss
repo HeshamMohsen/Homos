@@ -1,0 +1,35 @@
+.event {
+    width: 30%;
+    margin-right: 3%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #ECF6FF;
+}
+
+.event__time {
+    font-size: 14px;
+    font-weight: 500;
+    color: #198CFF;
+}
+
+.event__related {
+    padding: 0 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 100;
+    border-radius: 10px;
+    background: #198CFF;
+    color: #fff;
+}
+
+.event__name {
+    text-align: left;
+
+    h2 {
+        font-size: 18px;
+        color: #198CFF;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}

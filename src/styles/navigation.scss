@@ -1,0 +1,55 @@
+.navigation {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-right: 1px solid #ddd;
+    width: 25%;
+}
+
+.navigation__inner {
+    flex: 1;
+
+    div {
+        cursor: pointer;
+        padding: 4px 20px;
+        margin: 10px 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+    
+        &:hover {
+            background-color: lighten($color: #198CFF, $amount: 20%);
+            color: #fff
+        }
+    }
+    
+}
+
+.item-text {
+    margin-left: 25px;
+    font-size: 18px;
+}
+
+.item-icon {
+    font-size: 18px;
+}
+
+.circle-yellow,
+.circle-red,
+.circle-green {
+    width: 12px;
+    height: 12px;
+    margin: 0 3px;
+}
+
+.circle-green {
+    background-color: #7ED321;
+}
+
+.circle-yellow {
+    background-color: #FFC023;
+}
+
+.circle-red {
+    background-color: #FF4E47;
+}
