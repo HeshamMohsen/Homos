@@ -5,9 +5,9 @@ function Navigation(props) {
     <div className="navigation">
       <div className="navigation__upper d-flex justify-content-between align-items-center px-3">
         <div className="d-flex">
-          <div className="circle rounded-circle rounded-pill circle-red"></div>
-          <div className="circle rounded-circle rounded-pill circle-green"></div>
-          <div className="circle rounded-circle rounded-pill circle-yellow"></div>
+          <div className="circle rounded-circle rounded-pill circle--red"></div>
+          <div className="circle rounded-circle rounded-pill circle--green"></div>
+          <div className="circle rounded-circle rounded-pill circle--yellow"></div>
         </div>
         <div>
           <i className="fas fa-ellipsis-h"></i>
@@ -16,7 +16,7 @@ function Navigation(props) {
       <div className="navigation__inner py-5">
         <div>
           <i className="fas fa-inbox item-icon"></i>
-          <p className="item-text">Inbox</p>
+          <p className="item-text">Events</p>
         </div>
         <div>
           <i className="fas fa-calendar-alt item-icon"></i>
@@ -24,7 +24,7 @@ function Navigation(props) {
         </div>
         <div>
           <i className="fas fa-check item-icon"></i>
-          <p className="item-text">Completed</p>
+          <p className="item-text">Ended</p>
         </div>
         <div>
           <i className="fas fa-trash-alt item-icon"></i>

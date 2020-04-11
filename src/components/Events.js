@@ -15,7 +15,9 @@ function Events() {
   return (
     <div className="events p-4">
       <main className="m-3 border-bottom m-0">
-        <h5>All Events</h5>
+        <h5>
+          All Events <span className="event__related event__related--light">{events?.length}</span>
+        </h5>
       </main>
 
       <div className="events__overflow d-flex justify-content-start align-items-start flex-wrap">

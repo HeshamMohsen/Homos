@@ -34,22 +34,22 @@
     font-size: 18px;
 }
 
-.circle-yellow,
-.circle-red,
-.circle-green {
+.circle--yellow,
+.circle--red,
+.circle--green {
     width: 12px;
     height: 12px;
     margin: 0 3px;
 }
 
-.circle-green {
+.circle--green {
     background-color: #7ED321;
 }
 
-.circle-yellow {
+.circle--yellow {
     background-color: #FFC023;
 }
 
-.circle-red {
+.circle--red {
     background-color: #FF4E47;
 }

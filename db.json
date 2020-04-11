@@ -1,16 +1,9 @@
 {
   "events": [
     {
-      "id": "f7dfdd5f-067c-4d48-b6a9-c27f52b32370",
-      "name": "events",
-      "date": "2020-04-12",
-      "time": "",
-      "related_to": "learning"
-    },
-    {
-      "id": "77ed90e3-eb9c-4300-bbc1-027ab3fa6fe2",
-      "name": "How to code: simple data",
-      "date": "2020-04-22",
+      "id": "3b898bc9-d54c-40c8-b04a-13cc17d49884",
+      "name": "conquering responsive layouts",
+      "date": "2020-04-13",
       "time": "",
       "related_to": "learning"
     }

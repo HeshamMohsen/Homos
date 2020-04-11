@@ -1,34 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { v4 as uuid } from "uuid";
+import useFormInput from "./useFormInput";
 
 function AddEvent() {
-  const [name, setName] = useState("");
-  const [related, setRelated] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-
-  const nameChangeHandler = (e) => {
-    setName(e.target.value);
-  };
-
-  const relatedChangeHandler = (e) => {
-    setRelated(e.target.value);
-  };
-
-  const dateChangeHandler = (e) => {
-    setDate(e.target.value);
-  };
-
-  const timeChangeHandler = (e) => {
-    setTime(e.target.value);
-  };
+  const name = useFormInput("");
+  const related = useFormInput("");
+  const date = useFormInput("");
+  const time = useFormInput("");
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-
-    if (!time) {
-      setTime("00:00");
-    }
 
     // submit to add event
     fetch("http://localhost:8080/events", {
@@ -36,7 +17,13 @@ function AddEvent() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: uuid(), name, date, time, related_to: "learning" }),
+      body: JSON.stringify({
+        id: uuid(),
+        name: name.value,
+        date: date.value,
+        time: time.value === "" ? "00:00" : time.value,
+        related_to: related.value,
+      }),
     }).then(() => {
       window.location.reload();
     });
@@ -56,8 +43,7 @@ function AddEvent() {
             name="name"
             required
             autoComplete="off"
-            value={name}
-            onChange={nameChangeHandler}
+            {...name}
           />
         </div>
         <div className="form-group">
@@ -68,30 +54,16 @@ function AddEvent() {
             name="name"
             required
             autoComplete="off"
-            value={related}
-            onChange={relatedChangeHandler}
+            {...related}
           />
         </div>
         <div className="form-group">
           <label>Date</label>
-          <input
-            className="form-control"
-            type="date"
-            name="date"
-            required
-            value={date}
-            onChange={dateChangeHandler}
-          />
+          <input className="form-control" type="date" name="date" required {...date} />
         </div>
         <div className="form-group">
           <label>Time</label>
-          <input
-            className="form-control"
-            type="time"
-            name="time"
-            value={time}
-            onChange={timeChangeHandler}
-          />
+          <input className="form-control" type="time" name="time" {...time} />
         </div>
         <button type="submit" value="Save" className="btn btn-primary">
           Save
