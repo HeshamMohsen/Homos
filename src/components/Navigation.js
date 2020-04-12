@@ -14,26 +14,14 @@ function Navigation(props) {
         </div>
       </div>
       <div className="navigation__inner py-5">
-        <div>
+        <div className="active">
           <i className="fas fa-inbox item-icon"></i>
           <p className="item-text">Events</p>
-        </div>
-        <div>
-          <i className="fas fa-calendar-alt item-icon"></i>
-          <p className="item-text">Upcoming</p>
-        </div>
-        <div>
-          <i className="fas fa-check item-icon"></i>
-          <p className="item-text">Ended</p>
-        </div>
-        <div>
-          <i className="fas fa-trash-alt item-icon"></i>
-          <p className="item-text">Trash</p>
         </div>
       </div>
       <button
         className="btn btn-primary rounded-circle align-self-center"
-        onClick={props.onAddEventHandler}
+        onClick={props.showAddEventComponentHandler}
       >
         <i className="fas fa-plus"></i>
       </button>

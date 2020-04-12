@@ -2,7 +2,7 @@ import React from "react";
 import { v4 as uuid } from "uuid";
 import useFormInput from "./useFormInput";
 
-function AddEvent() {
+function AddEvent(props) {
   const name = useFormInput("");
   const related = useFormInput("");
   const date = useFormInput("");
@@ -25,7 +25,7 @@ function AddEvent() {
         related_to: related.value,
       }),
     }).then(() => {
-      window.location.reload();
+      props.showAddEventComponentHandler();
     });
   };
 
@@ -41,6 +41,7 @@ function AddEvent() {
             className="form-control"
             type="text"
             name="name"
+            autoFocus
             required
             autoComplete="off"
             {...name}

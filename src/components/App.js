@@ -4,17 +4,21 @@ import Events from "./Events";
 import AddEvent from "./AddEvent";
 
 function App() {
-  const [addEvent, setAddEvent] = useState(false);
+  const [showAddEvent, setShowAddEvent] = useState(false);
 
-  const onAddEventHandler = () => {
-    setAddEvent(true);
+  const showAddEventComponentHandler = () => {
+    setShowAddEvent(!showAddEvent);
   };
 
   return (
     <div className="app-container">
       <div className="countdown">
-        <Navigation onAddEventHandler={onAddEventHandler} />
-        {addEvent ? <AddEvent /> : <Events />}
+        <Navigation showAddEventComponentHandler={showAddEventComponentHandler} />
+        {showAddEvent ? (
+          <AddEvent showAddEventComponentHandler={showAddEventComponentHandler} />
+        ) : (
+          <Events />
+        )}
       </div>
     </div>
   );

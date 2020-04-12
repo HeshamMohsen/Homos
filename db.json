@@ -5,7 +5,32 @@
       "name": "conquering responsive layouts",
       "date": "2020-04-13",
       "time": "",
-      "related_to": "learning"
+      "related_to": "learning",
+      "is_deleted": false
+    },
+    {
+      "id": "467cf93f-32bd-446e-aa73-e892ff8f78df",
+      "name": "My Birthday",
+      "date": "2020-09-04",
+      "time": "00:00",
+      "related_to": "fun",
+      "is_deleted": true
+    },
+    {
+      "id": "10fe4d2c-c870-4f44-996b-79a72c1f77c2",
+      "name": "Ramadan",
+      "date": "2020-04-22",
+      "time": "00:00",
+      "related_to": "Religion",
+      "is_deleted": true
+    },
+    {
+      "id": "bfafbc72-4c3a-4587-a758-2c1335b54340",
+      "name": "55555",
+      "date": "2020-04-12",
+      "time": "00:00",
+      "related_to": "55555555555rg",
+      "is_deleted": true
     }
   ]
 }

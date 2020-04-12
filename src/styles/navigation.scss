@@ -16,22 +16,27 @@
         display: flex;
         justify-content: flex-start;
         align-items: baseline;
-    
-        &:hover {
+
+        &:hover, 
+        &.active {
             background-color: lighten($color: #198CFF, $amount: 20%);
             color: #fff
         }
-    }
-    
+    }   
 }
 
 .item-text {
-    margin-left: 25px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .item-icon {
-    font-size: 18px;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.item-icon--fancy {
+    color: #198CFF;
+    cursor: pointer;
 }
 
 .circle--yellow,
