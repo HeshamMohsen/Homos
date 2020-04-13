@@ -23,6 +23,8 @@ function AddEvent(props) {
         date: date.value,
         time: time.value === "" ? "00:00" : time.value,
         related_to: related.value,
+        is_deleted: false,
+        started: false,
       }),
     }).then(() => {
       props.showAddEventComponentHandler();
