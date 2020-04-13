@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from "react";
 import Event from "./Event";
-import TrashedEvent from "./TrashedEvent";
+import Filters from "./Filters";
 
 function Events() {
   const [events, setEvents] = useState(null);
-  const [filteredEvents, setFilteredEvents] = useState(null);
-  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [searchText, setSearchText] = useState("");
+  const [activeFilterName, setActiveFilterName] = useState("upcoming");
+  const [filter, setFilter] = useState("?is_deleted=false&started=false");
 
   useEffect(() => {
-    fetch("http://localhost:8080/events")
+    // cancel prev request, each time fires new one
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetch(`http://localhost:8080/events${filter}&q=${searchText}`, { signal: signal })
       .then((response) => response.json())
       .then((data) => {
         setEvents(data);
       });
-  }, [selectedFilter]);
 
-  useEffect(() => {
-    setFilteredEvents(
-      events?.filter((event) => (selectedFilter === "all" ? !event.is_deleted : event.is_deleted))
-    );
-  }, [events, selectedFilter]);
+    return () => {
+      // prevent race conditions
+      controller.abort();
+    };
+  }, [filter, searchText]);
 
   const updateEvent = (id, updates) => {
     fetch(`http://localhost:8080/events/${id}`, {
@@ -29,52 +33,39 @@ function Events() {
       },
       body: JSON.stringify({ ...updates }),
     }).then(() => {
-      setFilteredEvents(filteredEvents.filter((event) => event.id !== id));
+      setEvents(events.filter((event) => event.id !== id));
     });
+  };
+
+  const handleSelectedFilter = (active, filter) => {
+    setActiveFilterName(active);
+    setFilter(filter);
   };
 
   return (
     <div className="events p-4">
-      <main className="d-flex justify-content-between align-items-center m-3 border-bottom m-0">
-        <h5>
-          All Events
-          <span className="event__related event__related--light ml-2">
-            {filteredEvents?.length}
-          </span>
+      <main className="d-flex justify-content-between align-items-center border-bottom my-3 pb-3">
+        <h5 className="flex-grow-1">
+          Events
+          <span className="event__related event__related--light ml-2">{events?.length}</span>
         </h5>
-
-        <div className="filters">
-          <span
-            className={
-              selectedFilter === "all"
-                ? "event__related mr-2"
-                : "event__related event__related--light mr-2"
-            }
-            onClick={() => setSelectedFilter("all")}
-          >
-            All
-          </span>
-          <span
-            className={
-              selectedFilter === "trashed"
-                ? "event__related mr-2"
-                : "event__related event__related--light mr-2"
-            }
-            onClick={() => setSelectedFilter("trashed")}
-          >
-            Trashed
-          </span>
-        </div>
+        <Filters
+          activeFilterName={activeFilterName}
+          handleSelectedFilter={handleSelectedFilter}
+          searchText={searchText}
+          setSearchText={setSearchText}
+        />
       </main>
 
       <div className="events__overflow d-flex justify-content-start align-items-start flex-wrap">
-        {selectedFilter === "all"
-          ? filteredEvents?.map((event) => (
-              <Event updateEvent={updateEvent} {...event} key={event.name} />
-            ))
-          : filteredEvents.map((event) => (
-              <TrashedEvent updateEvent={updateEvent} {...event} key={event.name} />
-            ))}
+        {events?.map((event) => (
+          <Event
+            updateEvent={updateEvent}
+            event={event}
+            key={event.name}
+            eventType={activeFilterName}
+          />
+        ))}
       </div>
     </div>
   );
