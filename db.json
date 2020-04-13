@@ -4,9 +4,10 @@
       "id": "3b898bc9-d54c-40c8-b04a-13cc17d49884",
       "name": "conquering responsive layouts",
       "date": "2020-04-13",
-      "time": "",
+      "time": "00:00",
       "related_to": "learning",
-      "is_deleted": false
+      "is_deleted": false,
+      "started": true
     },
     {
       "id": "467cf93f-32bd-446e-aa73-e892ff8f78df",
@@ -14,7 +15,8 @@
       "date": "2020-09-04",
       "time": "00:00",
       "related_to": "fun",
-      "is_deleted": true
+      "is_deleted": false,
+      "started": false
     },
     {
       "id": "10fe4d2c-c870-4f44-996b-79a72c1f77c2",
@@ -22,7 +24,8 @@
       "date": "2020-04-22",
       "time": "00:00",
       "related_to": "Religion",
-      "is_deleted": true
+      "is_deleted": false,
+      "started": false
     },
     {
       "id": "bfafbc72-4c3a-4587-a758-2c1335b54340",
@@ -30,7 +33,17 @@
       "date": "2020-04-12",
       "time": "00:00",
       "related_to": "55555555555rg",
-      "is_deleted": true
+      "is_deleted": false,
+      "started": true
+    },
+    {
+      "id": "332cb432-82b2-40b2-b8fa-844b60184ab5",
+      "name": "new event will fire right after 2 mins",
+      "date": "2020-04-13",
+      "time": "14:22",
+      "related_to": "unit test",
+      "is_deleted": false,
+      "started": true
     }
   ]
 }

@@ -25,11 +25,10 @@ export default function useCountdownTimer(dates) {
 
       if (now >= date) {
         clearInterval(timer);
-        setDays("-");
-        setHours("-");
-        setMinutes("-");
-        setSeconds("-");
-        alert("event is now started.");
+        setDays("0");
+        setHours("0");
+        setMinutes("0");
+        setSeconds("0");
       }
     };
 
