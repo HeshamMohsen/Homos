@@ -62,11 +62,36 @@ function AddEvent(props) {
         </div>
         <div className="form-group">
           <label>Date</label>
-          <input className="form-control" type="date" name="date" required {...date} />
+          <input
+            className="form-control"
+            type="date"
+            name="date"
+            required
+            value={
+              new Date(
+                `${new Date().getFullYear()}-${parseInt(
+                  new Date().getMonth() + 1
+                )}-${new Date().getDate()}`
+              ).getTime() > new Date(date.value).getTime()
+                ? ""
+                : date.value
+            }
+            onChange={date.onChange}
+          />
         </div>
         <div className="form-group">
           <label>Time</label>
-          <input className="form-control" type="time" name="time" {...time} />
+          <input
+            className="form-control"
+            type="time"
+            name="time"
+            value={
+              new Date().getTime() > new Date(`${date.value} ${time.value}`).getTime()
+                ? ""
+                : time.value
+            }
+            onChange={time.onChange}
+          />
         </div>
         <button type="submit" value="Save" className="btn btn-primary">
           Save
