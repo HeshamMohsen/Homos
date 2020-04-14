@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useCountdownTimer from "./useCountdownTimer";
 
-function UpcomingEvents({ id, name, date, time, related_to, started, updateEvent }) {
-  const [days, hours, minutes, seconds] = useCountdownTimer(`${date} ${time}`);
+function UpcomingEvent({ id, name, date, time, related_to, updateEvent }) {
+  const [flag, setFlag] = useState(false);
+  const [count, setCount] = useState(5);
+  const { days, hours, minutes, seconds, eventStarted } = useCountdownTimer(`${date} ${time}`);
 
-  if (days === "0" && started === false) {
-    updateEvent(id, { started: true });
-  }
+  useEffect(() => {
+    // start update event
+    const startAnimate =
+      eventStarted &&
+      setInterval(() => {
+        if (count === 0) {
+          updateEvent(id, { started: true });
+          return clearInterval(startAnimate);
+        }
+
+        setCount(count - 1);
+        setFlag(!flag);
+      }, 500);
+
+    return () => {
+      clearInterval(startAnimate);
+    };
+  }, [eventStarted, id, updateEvent, count, flag]);
 
   return (
-    <div className="event mb-3">
+    <div className={`event mb-3 event--${flag}`}>
       <div className="event__header d-flex justify-content-between align-items-center">
         <div className="event__time">{date}</div>
         <div className="event__related">{related_to}</div>
@@ -77,7 +94,7 @@ function TrashedEvent({ id, name, date, related_to, updateEvent }) {
 
 export default function Event({ event, updateEvent, eventType }) {
   const view = {
-    upcoming: () => <UpcomingEvents {...event} updateEvent={updateEvent} />,
+    upcoming: () => <UpcomingEvent {...event} updateEvent={updateEvent} />,
     started: () => <StartedEvent {...event} />,
     trashed: () => <TrashedEvent {...event} updateEvent={updateEvent} />,
   };
