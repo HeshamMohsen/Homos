@@ -18,6 +18,10 @@ function Navigation(props) {
           <i className="fas fa-inbox item-icon"></i>
           <p className="item-text">Events</p>
         </div>
+        <div onClick={() => props.setModalOpen(true)}>
+          <i className="fas fa-inbox item-icon"></i>
+          <p className="item-text">Labels</p>
+        </div>
       </div>
       <button
         className="btn btn-primary rounded-circle align-self-center"

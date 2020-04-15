@@ -1,0 +1,23 @@
+.labels {
+    overflow: auto;
+    padding-right: 10px;
+    max-height: 280px;
+} 
+
+.label {
+    border-radius: 8px;
+    box-shadow: 0.9px 1.8px 8px 0 rgba(0, 0, 0, 0.19);
+    border: solid 1px #d6d6d6;
+    padding: 15px;
+    margin: 8px 0;
+
+    i {
+        color: #B4B9BD;
+        cursor: pointer;
+    }
+}
+
+.label-name {
+    color: #B4B9BD;
+    font-weight: 500;
+}

@@ -47,7 +47,7 @@ function Events() {
       <main className="d-flex justify-content-between align-items-center border-bottom my-3 pb-3">
         <h5 className="flex-grow-1">
           Events
-          <span className="event__related event__related--light ml-2">{events?.length}</span>
+          <span className="event__label event__label--light ml-2">{events?.length}</span>
         </h5>
         <Filters
           activeFilterName={activeFilterName}

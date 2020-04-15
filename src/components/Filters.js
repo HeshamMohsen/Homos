@@ -22,8 +22,8 @@ export default function Filters({
       <span
         className={
           activeFilterName === "upcoming"
-            ? "event__related mr-2"
-            : "event__related event__related--light mr-2"
+            ? "event__label mr-2"
+            : "event__label event__label--light mr-2"
         }
         onClick={() => handleSelectedFilter("upcoming", "?is_deleted=false&started=false")}
       >
@@ -32,8 +32,8 @@ export default function Filters({
       <span
         className={
           activeFilterName === "started"
-            ? "event__related mr-2"
-            : "event__related event__related--light mr-2"
+            ? "event__label mr-2"
+            : "event__label event__label--light mr-2"
         }
         onClick={() => handleSelectedFilter("started", "?started=true")}
       >
@@ -42,8 +42,8 @@ export default function Filters({
       <span
         className={
           activeFilterName === "trashed"
-            ? "event__related mr-2"
-            : "event__related event__related--light mr-2"
+            ? "event__label mr-2"
+            : "event__label event__label--light mr-2"
         }
         onClick={() => handleSelectedFilter("trashed", "?is_deleted=true")}
       >
