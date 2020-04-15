@@ -1,12 +1,15 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
 import useFormInput from "./useFormInput";
+import useLabels from "./useLabels";
 
 function AddEvent(props) {
   const name = useFormInput("");
-  const related = useFormInput("");
+  const label = useFormInput("");
   const date = useFormInput("");
   const time = useFormInput("");
+
+  const { labels } = useLabels();
 
   const submitFormHandler = (e) => {
     e.preventDefault();
@@ -22,7 +25,7 @@ function AddEvent(props) {
         name: name.value,
         date: date.value,
         time: time.value === "" ? "00:00" : time.value,
-        related_to: related.value,
+        label: label.value,
         is_deleted: false,
         started: false,
       }),
@@ -50,15 +53,13 @@ function AddEvent(props) {
           />
         </div>
         <div className="form-group">
-          <label>Related to</label>
-          <input
-            className="form-control"
-            type="text"
-            name="name"
-            required
-            autoComplete="off"
-            {...related}
-          />
+          <label>Label</label>
+          <select className="form-control" {...label} value={label.value}>
+            <option></option>
+            {labels?.map((label) => (
+              <option key={label.id}>{label.name}</option>
+            ))}
+          </select>
         </div>
         <div className="form-group">
           <label>Date</label>

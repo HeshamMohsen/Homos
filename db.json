@@ -5,7 +5,7 @@
       "name": "conquering responsive layouts",
       "date": "2020-04-13",
       "time": "00:00",
-      "related_to": "learning",
+      "label": "learning",
       "is_deleted": false,
       "started": true
     },
@@ -14,7 +14,7 @@
       "name": "My Birthday",
       "date": "2020-09-04",
       "time": "00:00",
-      "related_to": "fun",
+      "label": "fun",
       "is_deleted": false,
       "started": false
     },
@@ -23,160 +23,16 @@
       "name": "Ramadan",
       "date": "2020-04-22",
       "time": "00:00",
-      "related_to": "Religion",
+      "label": "Religion",
       "is_deleted": false,
       "started": false
-    },
-    {
-      "id": "bfafbc72-4c3a-4587-a758-2c1335b54340",
-      "name": "55555",
-      "date": "2020-04-12",
-      "time": "00:00",
-      "related_to": "55555555555rg",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "332cb432-82b2-40b2-b8fa-844b60184ab5",
-      "name": "new event will fire right after 2 mins",
-      "date": "2020-04-13",
-      "time": "14:22",
-      "related_to": "unit test",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "18f9de94-f03c-43e0-ac5f-fea4a36df8c1",
-      "name": "event will starts soon",
-      "date": "2020-04-14",
-      "time": "15:00",
-      "related_to": "animation",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "6b228d8c-bcba-412c-bf24-b9c9d55fcb63",
-      "name": "new sd",
-      "date": "2020-04-14",
-      "time": "15:40",
-      "related_to": "flagger",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "ea01c2a1-9cef-44cc-a715-dcafed2848ad",
-      "name": "sdsdf",
-      "date": "2020-04-14",
-      "time": "15:43",
-      "related_to": "sdfesdfvwrw",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "cebcefd0-0e2a-4fb8-a09e-0e295fa8faee",
-      "name": "llllll",
-      "date": "2020-04-14",
-      "time": "15:44",
-      "related_to": "qwqe",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "a746d2d8-0acb-40b6-9e8f-e238ab9494de",
-      "name": "sfdsf",
-      "date": "2020-04-14",
-      "time": "15:45",
-      "related_to": "dsdww",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "8b2ba10b-4cf9-48e1-a91c-d0c565598d5b",
-      "name": "new event",
-      "date": "2020-04-14",
-      "time": "21:01",
-      "related_to": "facts",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "3983248d-afd4-40bf-a991-23ed04ccaa52",
-      "name": "new eve",
-      "date": "2020-04-14",
-      "time": "21:03",
-      "related_to": "gym",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "ec278e36-507f-42fb-af12-6e9cc666fac4",
-      "name": "hdhd",
-      "date": "2020-04-14",
-      "time": "21:03",
-      "related_to": "kkq",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "042b25d7-b2c8-4d95-903d-813d37fb057d",
-      "name": "hd",
-      "date": "2020-04-14",
-      "time": "21:42",
-      "related_to": "jkd",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "f0c33fea-da8c-4f65-9016-c6ae95df8757",
-      "name": "new ev",
-      "date": "2020-04-14",
-      "time": "21:44",
-      "related_to": "asjd",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "e4dd8e90-2a75-4946-bbab-ade672662035",
-      "name": "sdjk",
-      "date": "2020-04-14",
-      "time": "21:46",
-      "related_to": "djskldfj",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "1005e3dd-4427-4ad3-84f4-345ec2363366",
-      "name": "hebaa",
-      "date": "2020-04-14",
-      "time": "22:05",
-      "related_to": "fire",
-      "is_deleted": false,
-      "started": true
     },
     {
       "id": "d9f66aae-6dd7-4d7d-a3fb-08b40dc67849",
       "name": "fire",
       "date": "2020-04-14",
       "time": "22:06",
-      "related_to": "fun",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "44645118-9670-4eae-aa44-3e87b7a336f2",
-      "name": "djk",
-      "date": "2020-04-14",
-      "time": "22:06",
-      "related_to": "ksjf",
-      "is_deleted": false,
-      "started": true
-    },
-    {
-      "id": "882f7248-c09c-435a-bc94-7de0bae7e8cb",
-      "name": "hh",
-      "date": "2020-04-14",
-      "time": "22:13",
-      "related_to": "hhh",
+      "label": "fun",
       "is_deleted": false,
       "started": true
     },
@@ -185,36 +41,41 @@
       "name": "fun",
       "date": "2020-04-14",
       "time": "22:14",
-      "related_to": "fun",
+      "label": "fun",
       "is_deleted": false,
       "started": true
     },
     {
-      "id": "3aef5cdc-35ac-457a-bd81-df171e988678",
-      "name": "fjlsfqw",
-      "date": "2020-04-14",
-      "time": "22:15",
-      "related_to": "wlfkl",
+      "id": "7e94c6ac-ddeb-4af1-a258-d343224a0a9f",
+      "name": "how to code: complex data",
+      "date": "2020-04-25",
+      "time": "00:00",
+      "label": "learning",
       "is_deleted": false,
-      "started": true
+      "started": false
     },
     {
-      "id": "a314eaec-40e0-492d-b63c-fb61cf0c3aaf",
-      "name": "1klkfl",
-      "date": "2020-04-14",
-      "time": "22:14",
-      "related_to": "wkflkf",
+      "id": "e38b98eb-ef06-42c0-88d8-92f7a919dd5c",
+      "name": "event without label",
+      "date": "2020-04-15",
+      "time": "19:33",
+      "label": "",
       "is_deleted": false,
       "started": true
+    }
+  ],
+  "labels": [
+    {
+      "id": "420666e5-9ffc-4de7-ae93-73ef9b0a5020",
+      "name": "fun"
     },
     {
-      "id": "b7373638-fd81-478a-b0a0-e269dd7a9c7f",
-      "name": "kfl",
-      "date": "2020-04-14",
-      "time": "22:15",
-      "related_to": "wsfkslf",
-      "is_deleted": false,
-      "started": true
+      "id": "4e1d78f0-7dfd-4ff7-bf6f-065c17d21381",
+      "name": "Religion"
+    },
+    {
+      "id": "6e19479e-e791-4129-b649-ea061150e577",
+      "name": "learning"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useCountdownTimer from "./useCountdownTimer";
 
-function UpcomingEvent({ id, name, date, time, related_to, updateEvent }) {
+function UpcomingEvent({ id, name, date, time, label, updateEvent }) {
   const [flag, setFlag] = useState(false);
   const [count, setCount] = useState(5);
   const { days, hours, minutes, seconds, eventStarted } = useCountdownTimer(`${date} ${time}`);
@@ -29,7 +29,7 @@ function UpcomingEvent({ id, name, date, time, related_to, updateEvent }) {
     <div className={`event mb-3 event--${flag}`}>
       <div className="event__header d-flex justify-content-between align-items-center">
         <div className="event__time">{date}</div>
-        <div className="event__related">{related_to}</div>
+        <div className="event__label">{label}</div>
       </div>
       <div className="event__name my-3">
         <h2 title={name}>{name}</h2>
@@ -57,12 +57,12 @@ function UpcomingEvent({ id, name, date, time, related_to, updateEvent }) {
   );
 }
 
-function StartedEvent({ name, date, related_to }) {
+function StartedEvent({ name, date, label }) {
   return (
-    <div className="event mb-1 w-100">
+    <div className="event mb-3 w-100">
       <div className="event__header d-flex justify-content-between align-items-center">
         <div className="event__time">{date}</div>
-        <div className="event__related">{related_to}</div>
+        <div className="event__label">{label}</div>
       </div>
       <div className="event__name my-3">
         <h2 title={name}>{name}</h2>
@@ -71,12 +71,12 @@ function StartedEvent({ name, date, related_to }) {
   );
 }
 
-function TrashedEvent({ id, name, date, related_to, updateEvent }) {
+function TrashedEvent({ id, name, date, label, updateEvent }) {
   return (
-    <div className="event mb-1 w-100">
+    <div className="event mb-3 w-100">
       <div className="event__header d-flex justify-content-between align-items-center">
         <div className="event__time">{date}</div>
-        <div className="event__related">{related_to}</div>
+        <div className="event__label">{label}</div>
       </div>
       <div className="event__name my-3">
         <h2 title={name}>{name}</h2>
