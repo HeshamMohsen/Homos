@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { setShowAddEvent } from "../store/actions/events";
+import { setModalOpen } from "../store/actions/labels";
 
 function Navigation(props) {
   return (
@@ -42,6 +43,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setShowAddEvent: (state) => dispatch(setShowAddEvent(state)),
+  setModalOpen: (isOpen) => dispatch(setModalOpen(isOpen)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

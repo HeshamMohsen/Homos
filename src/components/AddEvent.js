@@ -2,9 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { v4 as uuid } from "uuid";
 import useFormInput from "./useFormInput";
-import useLabels from "./useLabels";
 
-import { setShowAddEvent } from "../store/actions/events";
+import { setShowAddEvent, startAddEvent } from "../store/actions/events";
 
 function AddEvent(props) {
   const name = useFormInput("");
@@ -12,29 +11,20 @@ function AddEvent(props) {
   const date = useFormInput("");
   const time = useFormInput("");
 
-  const { labels } = useLabels();
-
   const submitFormHandler = (e) => {
     e.preventDefault();
 
     // submit to add event
-    fetch("http://localhost:8080/events", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: uuid(),
-        name: name.value,
-        date: date.value,
-        time: time.value === "" ? "00:00" : time.value,
-        label: label.value,
-        is_deleted: false,
-        started: false,
-      }),
-    }).then(() => {
-      props.showAddEvent(false);
+    props.startAddEvent({
+      id: uuid(),
+      name: name.value,
+      date: date.value,
+      time: time.value === "" ? "00:00" : time.value,
+      label: label.value,
+      is_deleted: false,
+      started: false,
     });
+    props.setShowAddEvent(false);
   };
 
   return (
@@ -59,7 +49,7 @@ function AddEvent(props) {
           <label>Label</label>
           <select className="form-control" {...label} value={label.value}>
             <option></option>
-            {labels?.map((label) => (
+            {props.labels?.map((label) => (
               <option key={label.id}>{label.name}</option>
             ))}
           </select>
@@ -105,8 +95,13 @@ function AddEvent(props) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  setShowAddEvent: (state) => dispatch(setShowAddEvent(state)),
+const mapStateToProps = (state) => ({
+  labels: state.labels.labels,
 });
 
-export default connect(undefined, mapDispatchToProps)(AddEvent);
+const mapDispatchToProps = (dispatch) => ({
+  setShowAddEvent: (state) => dispatch(setShowAddEvent(state)),
+  startAddEvent: (event) => dispatch(startAddEvent(event)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddEvent);
