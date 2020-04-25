@@ -25,7 +25,7 @@
       "time": "00:00",
       "label": "Religion",
       "is_deleted": false,
-      "started": false
+      "started": true
     },
     {
       "id": "d9f66aae-6dd7-4d7d-a3fb-08b40dc67849",
@@ -52,7 +52,7 @@
       "time": "00:00",
       "label": "learning",
       "is_deleted": false,
-      "started": false
+      "started": true
     },
     {
       "id": "e38b98eb-ef06-42c0-88d8-92f7a919dd5c",
