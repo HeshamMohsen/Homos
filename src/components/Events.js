@@ -1,45 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import Event from "./Event";
 import Filters from "./Filters";
 
-function Events() {
-  const [events, setEvents] = useState(null);
-  const [searchText, setSearchText] = useState("");
-  const [activeFilterName, setActiveFilterName] = useState("upcoming");
-  const [filter, setFilter] = useState("?is_deleted=false&started=false");
+import { startSetEvents, startUpdateEvent } from "../store/actions/events";
 
+function Events({
+  startSetEvents,
+  startUpdateEvent,
+  events: { events, filter, searchText, activeFilterName },
+}) {
   useEffect(() => {
     // cancel prev request, each time fires new one
     const controller = new AbortController();
     const signal = controller.signal;
 
-    fetch(`http://localhost:8080/events${filter}&q=${searchText}`, { signal: signal })
-      .then((response) => response.json())
-      .then((data) => {
-        setEvents(data);
-      });
+    startSetEvents(signal);
 
     return () => {
       // prevent race conditions
       controller.abort();
     };
-  }, [filter, searchText]);
+  }, [filter, searchText, startSetEvents]);
 
   const updateEvent = (id, updates) => {
-    fetch(`http://localhost:8080/events/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ ...updates }),
-    }).then(() => {
-      setEvents(events.filter((event) => event.id !== id));
-    });
-  };
-
-  const handleSelectedFilter = (active, filter) => {
-    setActiveFilterName(active);
-    setFilter(filter);
+    startUpdateEvent(id, updates);
   };
 
   return (
@@ -49,12 +34,7 @@ function Events() {
           Events
           <span className="event__label event__label--light ml-2">{events?.length}</span>
         </h5>
-        <Filters
-          activeFilterName={activeFilterName}
-          handleSelectedFilter={handleSelectedFilter}
-          searchText={searchText}
-          setSearchText={setSearchText}
-        />
+        <Filters />
       </main>
 
       <div className="events__overflow d-flex justify-content-start align-items-start flex-wrap">
@@ -71,4 +51,13 @@ function Events() {
   );
 }
 
-export default Events;
+const mapStateToProps = (state) => ({
+  events: state.events,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  startSetEvents: (signal) => dispatch(startSetEvents(signal)),
+  startUpdateEvent: (id, updates) => dispatch(startUpdateEvent(id, updates)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Events);

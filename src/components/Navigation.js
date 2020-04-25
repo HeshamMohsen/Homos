@@ -1,4 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { setShowAddEvent } from "../store/actions/events";
+import { setModalOpen } from "../store/actions/labels";
 
 function Navigation(props) {
   return (
@@ -25,12 +29,21 @@ function Navigation(props) {
       </div>
       <button
         className="btn btn-primary rounded-circle align-self-center"
-        onClick={props.showAddEventComponentHandler}
+        onClick={() => props.setShowAddEvent(!props.showAddEvent)}
       >
-        <i className="fas fa-plus"></i>
+        {props.showAddEvent ? <i className="fas fa-times"></i> : <i className="fas fa-plus"></i>}
       </button>
     </div>
   );
 }
 
-export default Navigation;
+const mapStateToProps = (state) => ({
+  showAddEvent: state.events.showAddEvent,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setShowAddEvent: (state) => dispatch(setShowAddEvent(state)),
+  setModalOpen: (isOpen) => dispatch(setModalOpen(isOpen)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

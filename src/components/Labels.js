@@ -1,23 +1,27 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { connect } from "react-redux";
 import { v4 as uuid } from "uuid";
 import Modal from "react-modal";
 import useFormInput from "./useFormInput";
 import useClickOutside from "./useClickOutside";
-import useLabels from "./useLabels";
 import Label from "./Label";
+
+import { startAddLabel, startSetLabels, setModalOpen } from "../store/actions/labels";
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
-export default function Labels({ isModalOpen, setModalOpen }) {
+function Labels({ labels: { labels, isModalOpen }, startAddLabel, startSetLabels, setModalOpen }) {
   const label = useFormInput("");
-  const { labels, onChange: setLabels } = useLabels();
   const [error, setError] = useState("");
-
   const modalRef = useRef();
 
   // handle click outside modal
   useClickOutside(modalRef, () => setModalOpen(false));
+
+  useEffect(() => {
+    startSetLabels();
+  }, [startSetLabels]);
 
   const addNewLabelHandler = (e) => {
     e.preventDefault();
@@ -37,31 +41,8 @@ export default function Labels({ isModalOpen, setModalOpen }) {
     };
 
     // submit to add label
-    fetch("http://localhost:8080/labels", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newLabel),
-    }).then(() => {
-      // clear input after submit
-      label.onChange({ target: { value: "" } });
-      // push new label to labels array
-      setLabels([...labels, newLabel]);
-    });
-  };
-
-  const deleteLabelHandler = (id) => {
-    // submit to add label
-    fetch(`http://localhost:8080/labels/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(() => {
-      // push new label to labels array
-      setLabels(labels.filter((label) => label.id !== id));
-    });
+    startAddLabel(newLabel);
+    label.onChange({ target: { value: "" } });
   };
 
   return (
@@ -113,7 +94,7 @@ export default function Labels({ isModalOpen, setModalOpen }) {
 
           <div className="labels">
             {labels?.map((label) => (
-              <Label key={label.id} {...label} deleteLabelHandler={deleteLabelHandler} />
+              <Label key={label.id} {...label} />
             ))}
           </div>
         </div>
@@ -121,3 +102,15 @@ export default function Labels({ isModalOpen, setModalOpen }) {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  labels: state.labels,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  startAddLabel: (label) => dispatch(startAddLabel(label)),
+  startSetLabels: () => dispatch(startSetLabels()),
+  setModalOpen: (isOpen) => dispatch(setModalOpen(isOpen)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Labels);
