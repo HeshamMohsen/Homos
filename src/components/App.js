@@ -1,33 +1,26 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import Navigation from "./Navigation";
 import Events from "./Events";
 import AddEvent from "./AddEvent";
 import Labels from "./Labels";
 
-function App() {
-  const [showAddEvent, setShowAddEvent] = useState(false);
+function App({ showAddEvent }) {
   const [isModalOpen, setModalOpen] = useState(false);
-
-  const showAddEventComponentHandler = () => {
-    setShowAddEvent(!showAddEvent);
-  };
 
   return (
     <div className="app-container">
       <div className="countdown">
-        <Navigation
-          showAddEventComponentHandler={showAddEventComponentHandler}
-          setModalOpen={setModalOpen}
-        />
-        {showAddEvent ? (
-          <AddEvent showAddEventComponentHandler={showAddEventComponentHandler} />
-        ) : (
-          <Events />
-        )}
+        <Navigation setModalOpen={setModalOpen} />
+        {showAddEvent ? <AddEvent /> : <Events />}
       </div>
       <Labels isModalOpen={isModalOpen} setModalOpen={setModalOpen} />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  showAddEvent: state.events.showAddEvent,
+});
+
+export default connect(mapStateToProps)(App);

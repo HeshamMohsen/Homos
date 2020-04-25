@@ -1,7 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { v4 as uuid } from "uuid";
 import useFormInput from "./useFormInput";
 import useLabels from "./useLabels";
+
+import { setShowAddEvent } from "../store/actions/events";
 
 function AddEvent(props) {
   const name = useFormInput("");
@@ -30,7 +33,7 @@ function AddEvent(props) {
         started: false,
       }),
     }).then(() => {
-      props.showAddEventComponentHandler();
+      props.showAddEvent(false);
     });
   };
 
@@ -102,4 +105,8 @@ function AddEvent(props) {
   );
 }
 
-export default AddEvent;
+const mapDispatchToProps = (dispatch) => ({
+  setShowAddEvent: (state) => dispatch(setShowAddEvent(state)),
+});
+
+export default connect(undefined, mapDispatchToProps)(AddEvent);

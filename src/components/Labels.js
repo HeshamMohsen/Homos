@@ -9,7 +9,7 @@ import Label from "./Label";
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
-export default function Labels({ isModalOpen, setModalOpen }) {
+function Labels({ isModalOpen, setModalOpen }) {
   const label = useFormInput("");
   const { labels, onChange: setLabels } = useLabels();
   const [error, setError] = useState("");
@@ -121,3 +121,5 @@ export default function Labels({ isModalOpen, setModalOpen }) {
     </div>
   );
 }
+
+export default Labels;

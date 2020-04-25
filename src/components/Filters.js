@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import { setFilter, setActiveFilterName, setSearchText } from "../store/actions/events";
 
-export default function Filters({
-  activeFilterName,
-  handleSelectedFilter,
-  searchText,
+function Filters({
+  events: { searchText, activeFilterName },
+  setFilter,
+  setActiveFilterName,
   setSearchText,
 }) {
   return (
@@ -25,7 +27,10 @@ export default function Filters({
             ? "event__label mr-2"
             : "event__label event__label--light mr-2"
         }
-        onClick={() => handleSelectedFilter("upcoming", "?is_deleted=false&started=false")}
+        onClick={() => {
+          setFilter("?is_deleted=false&started=false");
+          setActiveFilterName("upcoming");
+        }}
       >
         Upcoming
       </span>
@@ -35,7 +40,10 @@ export default function Filters({
             ? "event__label mr-2"
             : "event__label event__label--light mr-2"
         }
-        onClick={() => handleSelectedFilter("started", "?started=true")}
+        onClick={() => {
+          setFilter("?started=true");
+          setActiveFilterName("started");
+        }}
       >
         Started
       </span>
@@ -45,10 +53,25 @@ export default function Filters({
             ? "event__label mr-2"
             : "event__label event__label--light mr-2"
         }
-        onClick={() => handleSelectedFilter("trashed", "?is_deleted=true")}
+        onClick={() => {
+          setFilter("?is_deleted=true");
+          setActiveFilterName("trashed");
+        }}
       >
         Trashed
       </span>
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  events: state.events,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setSearchText: (text) => dispatch(setSearchText(text)),
+  setFilter: (filter) => dispatch(setFilter(filter)),
+  setActiveFilterName: (name) => dispatch(setActiveFilterName(name)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);
