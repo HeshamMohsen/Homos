@@ -1,4 +1,5 @@
 {
+  "homePage": "https://heshammohsen.github.io/Homos/",
   "name": "homos-events-hub",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +21,7 @@
     "uuid": "^7.0.3"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
