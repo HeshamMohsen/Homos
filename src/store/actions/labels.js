@@ -6,7 +6,7 @@ const setLabels = (labels) => ({
 });
 
 export const startSetLabels = () => (dispatch) => {
-  fetch("http://localhost:8080/labels")
+  fetch("https://my-json-server.typicode.com/HeshamMohsen/homos-api/labels")
     .then((response) => response.json())
     .then((labels) => {
       dispatch(setLabels(labels));
@@ -19,7 +19,7 @@ const addLabel = (label) => ({
 });
 
 export const startAddLabel = (label) => async (dispatch) => {
-  await fetch("http://localhost:8080/labels", {
+  await fetch("https://my-json-server.typicode.com/HeshamMohsen/homos-api/labels", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const deleteLabel = (id) => ({
 });
 
 export const startDeleteLabel = (id) => async (dispatch) => {
-  await fetch(`http://localhost:8080/labels/${id}`, {
+  await fetch(`https://my-json-server.typicode.com/HeshamMohsen/homos-api/labels/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

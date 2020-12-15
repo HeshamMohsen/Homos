@@ -15,7 +15,9 @@ const setEvents = (events) => ({
 
 export const startSetEvents = (signal) => (dispatch, getState) => {
   fetch(
-    `http://localhost:8080/events${getState().events.filter}&q=${getState().events.searchText}`,
+    `https://my-json-server.typicode.com/HeshamMohsen/homos-api/events${
+      getState().events.filter
+    }&q=${getState().events.searchText}`,
     {
       signal: signal,
     }
@@ -32,7 +34,7 @@ const addEvent = (event) => ({
 });
 
 export const startAddEvent = (event) => async (dispatch) => {
-  await fetch("http://localhost:8080/events", {
+  await fetch("https://my-json-server.typicode.com/HeshamMohsen/homos-api/events", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +50,7 @@ const updateEvent = (id) => ({
 });
 
 export const startUpdateEvent = (id, updates) => async (dispatch) => {
-  await fetch(`http://localhost:8080/events/${id}`, {
+  await fetch(`https://my-json-server.typicode.com/HeshamMohsen/homos-api/events/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
