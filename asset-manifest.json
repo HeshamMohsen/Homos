@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.a0f3e4eb.chunk.css",
-    "main.js": "/static/js/main.e5908539.chunk.js",
-    "main.js.map": "/static/js/main.e5908539.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4346355c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4346355c.js.map",
-    "static/css/2.1fcd4d4c.chunk.css": "/static/css/2.1fcd4d4c.chunk.css",
-    "static/js/2.4630fed8.chunk.js": "/static/js/2.4630fed8.chunk.js",
-    "static/js/2.4630fed8.chunk.js.map": "/static/js/2.4630fed8.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.781162fa24e13b890b6ee33c62b91cff.js": "/precache-manifest.781162fa24e13b890b6ee33c62b91cff.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.1fcd4d4c.chunk.css.map": "/static/css/2.1fcd4d4c.chunk.css.map",
-    "static/css/main.a0f3e4eb.chunk.css.map": "/static/css/main.a0f3e4eb.chunk.css.map",
-    "static/js/2.4630fed8.chunk.js.LICENSE.txt": "/static/js/2.4630fed8.chunk.js.LICENSE.txt",
-    "static/media/all.css": "/static/media/fa-solid-900.ec763292.svg"
+    "main.css": "/Homos/static/css/main.a0f3e4eb.chunk.css",
+    "main.js": "/Homos/static/js/main.80f4222a.chunk.js",
+    "main.js.map": "/Homos/static/js/main.80f4222a.chunk.js.map",
+    "runtime-main.js": "/Homos/static/js/runtime-main.b82ecd4d.js",
+    "runtime-main.js.map": "/Homos/static/js/runtime-main.b82ecd4d.js.map",
+    "static/css/2.0998db88.chunk.css": "/Homos/static/css/2.0998db88.chunk.css",
+    "static/js/2.4630fed8.chunk.js": "/Homos/static/js/2.4630fed8.chunk.js",
+    "static/js/2.4630fed8.chunk.js.map": "/Homos/static/js/2.4630fed8.chunk.js.map",
+    "index.html": "/Homos/index.html",
+    "precache-manifest.f24a0eaaff55011b66c3ba837a39bc5b.js": "/Homos/precache-manifest.f24a0eaaff55011b66c3ba837a39bc5b.js",
+    "service-worker.js": "/Homos/service-worker.js",
+    "static/css/2.0998db88.chunk.css.map": "/Homos/static/css/2.0998db88.chunk.css.map",
+    "static/css/main.a0f3e4eb.chunk.css.map": "/Homos/static/css/main.a0f3e4eb.chunk.css.map",
+    "static/js/2.4630fed8.chunk.js.LICENSE.txt": "/Homos/static/js/2.4630fed8.chunk.js.LICENSE.txt",
+    "static/media/all.css": "/Homos/static/media/fa-solid-900.ec763292.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4346355c.js",
-    "static/css/2.1fcd4d4c.chunk.css",
+    "static/js/runtime-main.b82ecd4d.js",
+    "static/css/2.0998db88.chunk.css",
     "static/js/2.4630fed8.chunk.js",
     "static/css/main.a0f3e4eb.chunk.css",
-    "static/js/main.e5908539.chunk.js"
+    "static/js/main.80f4222a.chunk.js"
   ]
 }
