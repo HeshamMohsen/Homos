@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import useCountdownTimer from "./useCountdownTimer";
+import { updateEvent } from "../store/actions/events";
 
 function UpcomingEvent({ id, name, date, time, label, updateEvent }) {
   const [flag, setFlag] = useState(false);
@@ -92,7 +94,7 @@ function TrashedEvent({ id, name, date, label, updateEvent }) {
   );
 }
 
-export default function Event({ event, updateEvent, eventType }) {
+function Event({ event, updateEvent, eventType }) {
   const view = {
     upcoming: () => <UpcomingEvent {...event} updateEvent={updateEvent} />,
     started: () => <StartedEvent {...event} />,
@@ -101,3 +103,9 @@ export default function Event({ event, updateEvent, eventType }) {
 
   return view[eventType]();
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  updateEvent: (id, updates) => dispatch(updateEvent(id, updates)),
+});
+
+export default connect(undefined, mapDispatchToProps)(Event);

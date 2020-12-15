@@ -1,22 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Event from "./Event";
 import Filters from "./Filters";
 
-import { startSetEvents, startUpdateEvent } from "../store/actions/events";
+import { startSetEvents } from "../store/actions/events";
 
-function Events({
-  startSetEvents,
-  startUpdateEvent,
-  events: { events, filter, searchText, activeFilterName },
-}) {
+function Events({ startSetEvents, events: { events, activeFilterName } }) {
+  const [filteredEvents, setFilteredEvents] = useState(events);
   useEffect(() => {
     startSetEvents();
-  }, [filter, searchText, startSetEvents]);
+  }, [startSetEvents]);
 
-  const updateEvent = (id, updates) => {
-    startUpdateEvent(id, updates);
-  };
+  useEffect(() => {
+    setFilteredEvents(
+      events &&
+        events.filter((event) => {
+          if (activeFilterName === "upcoming") {
+            return !event.is_deleted && !event.started;
+          } else if (activeFilterName === "started") {
+            return event.started;
+          } else {
+            return event.is_deleted;
+          }
+        })
+    );
+  }, [events, activeFilterName]);
 
   return (
     <div className="events p-4">
@@ -29,13 +37,8 @@ function Events({
       </main>
 
       <div className="events__overflow d-flex justify-content-start align-items-start flex-wrap">
-        {events?.map((event) => (
-          <Event
-            updateEvent={updateEvent}
-            event={event}
-            key={event.name}
-            eventType={activeFilterName}
-          />
+        {filteredEvents?.map((event) => (
+          <Event event={event} key={event.name} eventType={activeFilterName} />
         ))}
       </div>
     </div>
@@ -48,7 +51,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   startSetEvents: (signal) => dispatch(startSetEvents(signal)),
-  startUpdateEvent: (id, updates) => dispatch(startUpdateEvent(id, updates)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Events);

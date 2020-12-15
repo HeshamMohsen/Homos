@@ -2,8 +2,6 @@ import {
   ADD_EVENT,
   UPDATE_EVENT,
   SET_EVENTS,
-  SET_FILTER,
-  SET_SEARCH_TEXT,
   SET_ACTIVE_FILTER,
   SHOW_ADD_EVENT,
 } from "../../constants/action-types";
@@ -13,12 +11,8 @@ const setEvents = (events) => ({
   events,
 });
 
-export const startSetEvents = () => (dispatch, getState) => {
-  fetch(
-    `https://my-json-server.typicode.com/HeshamMohsen/homos-api/events${
-      getState().events.filter
-    }&q=${getState().events.searchText}`
-  )
+export const startSetEvents = () => (dispatch) => {
+  fetch("https://my-json-server.typicode.com/HeshamMohsen/homos-api/events")
     .then((response) => response.json())
     .then((events) => {
       dispatch(setEvents(events));
@@ -41,30 +35,10 @@ export const startAddEvent = (event) => async (dispatch) => {
   dispatch(addEvent(event));
 };
 
-const updateEvent = (id) => ({
+export const updateEvent = (id, updates) => ({
   type: UPDATE_EVENT,
   id,
-});
-
-export const startUpdateEvent = (id, updates) => async (dispatch) => {
-  await fetch(`https://my-json-server.typicode.com/HeshamMohsen/homos-api/events/${id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(updates),
-  });
-  dispatch(updateEvent(id));
-};
-
-export const setFilter = (filter) => ({
-  type: SET_FILTER,
-  filter,
-});
-
-export const setSearchText = (text) => ({
-  type: SET_SEARCH_TEXT,
-  text,
+  updates,
 });
 
 export const setActiveFilterName = (name) => ({
