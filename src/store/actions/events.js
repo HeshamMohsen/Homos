@@ -13,14 +13,11 @@ const setEvents = (events) => ({
   events,
 });
 
-export const startSetEvents = (signal) => (dispatch, getState) => {
+export const startSetEvents = () => (dispatch, getState) => {
   fetch(
     `https://my-json-server.typicode.com/HeshamMohsen/homos-api/events${
       getState().events.filter
-    }&q=${getState().events.searchText}`,
-    {
-      signal: signal,
-    }
+    }&q=${getState().events.searchText}`
   )
     .then((response) => response.json())
     .then((events) => {

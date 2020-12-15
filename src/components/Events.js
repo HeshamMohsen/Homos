@@ -11,16 +11,7 @@ function Events({
   events: { events, filter, searchText, activeFilterName },
 }) {
   useEffect(() => {
-    // cancel prev request, each time fires new one
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    startSetEvents(signal);
-
-    return () => {
-      // prevent race conditions
-      controller.abort();
-    };
+    startSetEvents();
   }, [filter, searchText, startSetEvents]);
 
   const updateEvent = (id, updates) => {
