@@ -1,17 +1,12 @@
-import { ADD_LABEL, DELETE_LABEL, SET_LABELS, IS_MODAL_OPEN } from "../../constants/action-types";
+import { ADD_LABEL, DELETE_LABEL, IS_MODAL_OPEN } from "../../constants/action-types";
 
 const defaultLabels = {
-  labels: null,
+  labels: [],
   isModalOpen: false,
 };
 
 export default (state = defaultLabels, action) => {
   switch (action.type) {
-    case SET_LABELS:
-      return {
-        ...state,
-        labels: action.labels,
-      };
     case ADD_LABEL:
       return {
         ...state,

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { connect } from "react-redux";
 import { v4 as uuid } from "uuid";
 import Modal from "react-modal";
@@ -6,22 +6,18 @@ import useFormInput from "./useFormInput";
 import useClickOutside from "./useClickOutside";
 import Label from "./Label";
 
-import { startAddLabel, startSetLabels, setModalOpen } from "../store/actions/labels";
+import { addLabel, setModalOpen } from "../store/actions/labels";
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
-function Labels({ labels: { labels, isModalOpen }, startAddLabel, startSetLabels, setModalOpen }) {
+function Labels({ labels: { labels, isModalOpen }, addLabel, setModalOpen }) {
   const label = useFormInput("");
   const [error, setError] = useState("");
   const modalRef = useRef();
 
   // handle click outside modal
   useClickOutside(modalRef, () => setModalOpen(false));
-
-  useEffect(() => {
-    startSetLabels();
-  }, [startSetLabels]);
 
   const addNewLabelHandler = (e) => {
     e.preventDefault();
@@ -41,7 +37,7 @@ function Labels({ labels: { labels, isModalOpen }, startAddLabel, startSetLabels
     };
 
     // submit to add label
-    startAddLabel(newLabel);
+    addLabel(newLabel);
     label.onChange({ target: { value: "" } });
   };
 
@@ -108,8 +104,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startAddLabel: (label) => dispatch(startAddLabel(label)),
-  startSetLabels: () => dispatch(startSetLabels()),
+  addLabel: (label) => dispatch(addLabel(label)),
   setModalOpen: (isOpen) => dispatch(setModalOpen(isOpen)),
 });
 
