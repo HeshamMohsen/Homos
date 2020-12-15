@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { v4 as uuid } from "uuid";
 import useFormInput from "./useFormInput";
 
-import { setShowAddEvent, startAddEvent } from "../store/actions/events";
+import { setShowAddEvent, addEvent } from "../store/actions/events";
 
 function AddEvent(props) {
   const name = useFormInput("");
@@ -15,7 +15,7 @@ function AddEvent(props) {
     e.preventDefault();
 
     // submit to add event
-    props.startAddEvent({
+    props.addEvent({
       id: uuid(),
       name: name.value,
       date: date.value,
@@ -101,7 +101,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setShowAddEvent: (state) => dispatch(setShowAddEvent(state)),
-  startAddEvent: (event) => dispatch(startAddEvent(event)),
+  addEvent: (event) => dispatch(addEvent(event)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddEvent);

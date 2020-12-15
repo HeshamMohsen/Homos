@@ -3,13 +3,8 @@ import { connect } from "react-redux";
 import Event from "./Event";
 import Filters from "./Filters";
 
-import { startSetEvents } from "../store/actions/events";
-
-function Events({ startSetEvents, events: { events, activeFilterName } }) {
+function Events({ events: { events, activeFilterName } }) {
   const [filteredEvents, setFilteredEvents] = useState(events);
-  useEffect(() => {
-    startSetEvents();
-  }, [startSetEvents]);
 
   useEffect(() => {
     setFilteredEvents(
@@ -49,8 +44,4 @@ const mapStateToProps = (state) => ({
   events: state.events,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  startSetEvents: (signal) => dispatch(startSetEvents(signal)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Events);
+export default connect(mapStateToProps)(Events);
